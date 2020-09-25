@@ -1,0 +1,48 @@
+//import java utilities
+import java.util.*;
+public class Newton 
+{
+    public static void main(String [] args)
+    {
+        //Scanner is named stdn
+        Scanner stdn = new Scanner(System.in); 
+        double epsilon = 0.00006639;
+        double approx, value;
+        int num, counter = 0;
+       
+        System.out.print("Enter a positive number that you want to find the square root: ");
+        num = stdn.nextInt();
+        
+        //Calculation for the approximation
+        approx = num / 2;
+        
+        //Chunks of print ln
+        System.out.println();
+        System.out.printf("Initial approximation R%d = %.6f\n",counter, approx );
+        System.out.println();
+        System.out.println("Intermediate approximations: ");
+        
+        //While loop for the Approximation is greater than epsilon
+        while(Math.abs(num - Math.pow(approx , 2)) > epsilon)
+        {
+            counter ++;
+            //Newtons method
+            approx = Newton(num, approx);
+            //Prints oit the new value of R
+            System.out.printf("R%d = %.6f\n", counter, approx);
+        }
+        
+        //Prints out the final result from the main
+        System.out.println();
+        System.out.printf("Final result - The square root of %d is: %.6f\n", num, approx);
+        
+    }//end MAIN
+    
+    //Newton method, puts the value of num to "X" and approx to "Y"
+    public static double Newton(double x, double y)
+    {
+        //calculation
+        double approx = 0.5 * (y + (x / y));
+        return approx;
+    }
+}//end NEWTON METHOD
